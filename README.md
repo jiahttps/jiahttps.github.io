@@ -6,3 +6,6 @@ jiathis.com is a popular sharing service. However it does not support HTTPS. Thi
 ```html
 <script type="text/javascript" src="https://jiahttps.github.io/jia.js" charset="utf-8"></script>
 ```
+
+### Credit
+https://github.com/tomoat/tomoat.github.io
