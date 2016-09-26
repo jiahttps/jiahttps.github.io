@@ -1,7 +1,9 @@
-/* (c) 2012 JiaThis Inc. 0817*/
 var JIATHIS_CONFIGS = {
     webhost: "https://jiahttps.github.io",
     lhost: "http://l.jiathis.com",
+    shost: "http://s.jiathis.com",
+    qhost: "https://api.qrserver.com/v1/create-qr-code/",
+    _s: null,
     codehost: "https://jiahttps.github.io",
     sc: false,
     uid: 1626433,
@@ -18,51 +20,54 @@ var JIATHIS_CONFIGS = {
         'jt_email': '邮件,yj',
         'jt_qzone': 'QQ空间,qqkj,sns.qzone.qq.com',
         'jt_tsina': '新浪微博,xlwb,weibo.com',
+        'jt_weixin': '微信,wx,weixin,weixin.qq.com',
         'jt_tqq': '腾讯微博,txwb,t.qq.com',
         'jt_tsohu': '搜狐微博,shwb,t.sohu.com',
         'jt_t163': '网易微博,wywb,t.163.com',
         'jt_renren': '人人网,rrw,www.renren.com',
         'jt_kaixin001': '开心网,kxw,www.kaixin001.com',
         'jt_googleplus': 'Google+,googlej,plus.url.google.com',
-        'jt_sohu': '搜狐白社会,shbsh,bai.sohu.com',
-        'jt_taobao': '淘江湖,tjh,i.taobao.com',
+        'jt_yixin': '易信,yx,www.yixin.im',
+        'jt_alibaba': '阿里巴巴,albb,www.1688.com',
         'jt_douban': '豆瓣,db,www.douban.com',
         'jt_xiaoyou': '朋友网,pyw,share.pengyou.com',
-        'jt_mop': '猫扑推客,mptk,tk.mop.com',
+        'jt_sdonote': '麦库记事,mkjs',
         'jt_baidu': '百度搜藏,bdsc,cang.baidu.com',
+        'jt_taobao': '淘江湖,tjh,i.taobao.com',
         'jt_ydnote': '有道云笔记,ydybj,note.youdao.com',
         'jt_189share': '手机快传,sjkc',
         'jt_tianya': '天涯社区,tysq,my.tianya.cn',
         'jt_feixin': '飞信,fx,space.feixin.10086.cn',
         'jt_tieba': '百度贴吧,bdtb,tieba.baidu.com',
+        'jt_qingbiji': '轻笔记,qbj',
         'jt_tifeng': '凤凰微博,fhwb,t.ifeng.com',
         'jt_youshi': '优士网,ysw,www.ushi.cn',
         'jt_fanfou': '饭否,ff,fanfou.com',
         'jt_diandian': '点点网,ddw,www.diandian.com',
         'jt_mingdao': '明道,md,www.mingdao.com',
-        'jt_51': '51社区,51sq,home.51.com',
-        'jt_qileke': '奇乐收藏,qlsc,www.qileke.com',
+        'jt_zsvs': '中搜v商,zsvs,zhongsou.net',
         'jt_google': '谷歌,gg',
         'jt_buzz': '谷歌Buzz,ggbuzz',
         'jt_youdao': '有道书签,ydsq,shuqian.youdao.com',
+        'jt_cqq': 'QQ好友,cqq,qqhl,connect.qq.com',
         'jt_qq': 'QQ书签,qqsq,shuqian.qq.com',
         'jt_msn': 'MSN,msn',
         'jt_pinterest': 'Pinterest,pinterest',
         'jt_huaban': '花瓣网,hbw,huaban.com',
         'jt_duitang': '堆糖,dt,www.duitang.com',
-        'jt_ifensi': '粉丝网,fsw,cyworld.ifensi.com',
         'jt_tyaolan': '摇篮微博,ylwb',
         'jt_115': '115收藏,115sc',
         'jt_hi': '百度空间,bdkj,apps.hi.baidu.com',
         'jt_gmail': 'Gmail邮箱,gmailyx,mail.google.com',
         'jt_hotmail': 'Hotmail邮箱,hotmailyx',
-        'jt_ymail': 'Yahoo! mail,yahoo! mail',
+        'jt_xqw': '雪球,xqw,xueqi.com',
         'jt_hexun': '和讯,hx,bookmark.hexun.com',
         'jt_toeeee': '南方微博,nfwb',
         'jt_139mail': '139邮箱,139yx',
         'jt_189mail': '189邮箱,189yx',
         'jt_i139': '爱分享,afx',
-        'jt_189cn': '天翼社区,tysq,club.189.cn',
+        'jt_iwo': 'WO+分享,iwo,wfx,i.wo.com.cn',
+        'jt_189cn': '翼友圈,yyq,club.189.cn',
         'jt_139': '移动微博,ydwb',
         'jt_tpeople': '人民微博,rmwb,t.people.com.cn',
         'jt_cnfol': '中金微博,zjwb',
@@ -70,19 +75,17 @@ var JIATHIS_CONFIGS = {
         'jt_caimi': '财迷,cm,t.eastmoney.com',
         'jt_translate': '谷歌翻译,ggfy',
         'jt_tuita': '推他,tt,www.tuita.com',
-        'jt_sdonote': '麦库记事,mkjs',
+        'jt_mop': '猫扑推客,mptk,tk.mop.com',
         'jt_digu': '嘀咕网,dgw,digu.com',
         'jt_xianguo': '鲜果,xg',
         'jt_faxianla': '发现啦,fxl',
         'jt_ganniu': '赶牛网,gnw,www.ganniu.com',
-        'jt_42qu': '42区,42q',
         'jt_miliao': '米聊,ml',
-        'jt_woshao': '我烧网,wsw,woshao.com',
-        'jt_qingsina': '新浪轻博,xlqb,qing.weibo.com',
+        'jt_kansohu': '搜狐随身看,shssk',
+        'jt_51': '51社区,51sq,home.51.com',
         'jt_ifengkb': '凤凰快博,fhkb,k.ifeng.com',
-        'jt_chinanews': '中新网,zxw',
+        'jt_jcrb': '法律微博,flwb',
         'jt_gmw': '光明网,gmw',
-        'jt_renjian': '人间网,rjw,renjian.com',
         'jt_leihou': '雷猴网,lhw,leihou.com',
         'jt_thexun': '和讯微博,hxwb,t.hexun.com',
         'jt_dream163': '游戏江湖,yxjh,hi.163.com',
@@ -93,7 +96,7 @@ var JIATHIS_CONFIGS = {
         'jt_tumblr': 'Tumblr,tumblr,www.tumblr.com',
         'jt_reddit': 'Reddit,reddit',
         'jt_instapaper': 'Instapaper,instapaper,www.instapaper.com',
-        'jt_readitlater': 'Read It Later,readitlater,readitlaterlist.com',
+        'jt_pocket': 'Pocket,pocket,getpocket.com',
         'jt_wealink': '若邻网,rlw',
         'jt_leshou': '乐收,ls,site.leshou.com',
         'jt_waakee': '挖客网,wkw',
@@ -106,7 +109,6 @@ var JIATHIS_CONFIGS = {
         'jt_mogujie': '蘑菇街,mgj,mogujie.cn',
         'jt_tianji': '天际网,tjw,app.tianji.com',
         'jt_poco': 'Poco网,pocow,my.poco.cn',
-        'jt_baohe': '宝盒网,bhw,www.baohe.com',
         'jt_yijee': '易集网,yjw,www.yijee.com',
         'jt_pdfonline': 'Pdf在线转换,pdfzxzh',
         'jt_printfriendly': '友好打印,yhdy',
@@ -134,16 +136,12 @@ var JIATHIS_CONFIGS = {
         'jt_fwisp': 'Fwisp,fwisp'
     }
 };
-(function () {
-    var x = document.getElementsByTagName('script');
-    for (var i = 0, ci; ci = x[i++];) {
+(function() {
+    var z = document.getElementsByTagName('script');
+    for (var i = 0, ci; ci = z[i++];) {
         if (/jiathis.com/.test(ci.src)) {
-            JIATHIS_CONFIGS.codehost = ci
-                .src
-                .substring(0, ci.src
-                .lastIndexOf("/"));
-            ci.src
-                .replace(/(uid)=([^&]+)/g, function (a, p, v) {
+            JIATHIS_CONFIGS.codehost = ci.src.substring(0, ci.src.lastIndexOf("/"));
+            ci.src.replace(/(uid)=([^&]+)/g, function(a, p, v) {
                 JIATHIS_CONFIGS[p] = v
             })
         }
@@ -153,65 +151,52 @@ var JIATHIS_CONFIGS = {
         dd = d.documentElement,
         db = d.body,
         m = Math.max,
-        ie = !! d.all,
-        ua = navigator.userAgent
-            .toLowerCase(),
+        ie = !!d.all,
+        ua = navigator.userAgent.toLowerCase(),
         head = d.getElementsByTagName("head")[0] || dd,
-        wlh = window.location
-            .host,
-        conf = (typeof (jiathis_config) == 'undefined') ? {} : jiathis_config,
+        wlh = window.location.host,
+        conf = (typeof(jiathis_config) == 'undefined') ? {} : jiathis_config,
         _ckpre = JIATHIS_CONFIGS.ckprefix,
         _lists = JIATHIS_CONFIGS.servicelist,
         _ref = d.referrer,
         _reced = false,
-        getWH = function () {
+        getWH = function() {
             return {
                 h: (isStrict ? dd : db).clientHeight,
                 w: (isStrict ? dd : db).clientWidth
             }
-        }, getS = function () {
+        },
+        getS = function() {
             return {
-                t: m(dd.scrollTop, db
-                    .scrollTop),
-                l: m(dd.scrollLeft, db
-                    .scrollLeft)
+                t: m(dd.scrollTop, db.scrollTop),
+                l: m(dd.scrollLeft, db.scrollLeft)
             }
-        }, getP = function (a) {
+        },
+        getP = function(a) {
             var r = {
-                t: 0,
-                l: 0
-            }, isGecko = /gecko/.test(ua),
-                add = function (t, l) {
-                    r.l += l, r
-                        .t += t
-                }, p = a,
+                    t: 0,
+                    l: 0
+                },
+                isGecko = /gecko/.test(ua),
+                add = function(t, l) {
+                    r.l += l, r.t += t
+                },
+                p = a,
                 sTL = getS();
             if (a && a != db) {
                 if (a.getBoundingClientRect) {
                     var b = a.getBoundingClientRect();
-                    if (b.top == b
-                        .bottom) {
-                        var g = a.style
-                            .display;
-                        a.style
-                            .display = "block";
-                        b.top = b
-                            .top - a
-                            .offsetHeight;
-                        a.style
-                            .display = g
+                    if (b.top == b.bottom) {
+                        var g = a.style.display;
+                        a.style.display = "block";
+                        b.top = b.top - a.offsetHeight;
+                        a.style.display = g
                     }
-                    add(b.top + sTL
-                        .t - dd
-                        .clientTop, b
-                        .left + sTL
-                        .l - dd
-                        .clientLeft)
+                    add(b.top + sTL.t - dd.clientTop, b.left + sTL.l - dd.clientLeft)
                 } else {
                     var c = d.defaultView;
                     while (p) {
-                        add(p.offsetTop, p
-                            .offsetLeft);
+                        add(p.offsetTop, p.offsetLeft);
                         var e = c.getComputedStyle(p, null);
                         if (isGecko) {
                             var f = parseInt(e.getPropertyValue("border-left-width"), 10) || 0,
@@ -225,20 +210,21 @@ var JIATHIS_CONFIGS = {
                     }
                     p = a.parentNode;
                     while (p && p != db) {
-                        add(-p.scrollTop, - p
-                            .scrollLeft);
+                        add(-p.scrollTop, -p.scrollLeft);
                         p = p.parentNode
                     }
                 }
             }
             return r
-        }, creElm = function (o, t, a) {
+        },
+        creElm = function(o, t, a) {
             var b = d.createElement(t || "div");
             for (var p in o) {
                 p == "style" ? (b[p].cssText = o[p]) : (b[p] = o[p])
             }
             return (a || db).insertBefore(b, (a || db).firstChild)
-        }, _uniqueConcat = function (a, b) {
+        },
+        _uniqueConcat = function(a, b) {
             var c = {};
             for (var i = 0; i < a.length; i++) {
                 c[a[i]] = 1
@@ -250,11 +236,13 @@ var JIATHIS_CONFIGS = {
                 }
             }
             return a
-        }, _sc = function (a, b, c) {
+        },
+        _sc = function(a, b, c) {
             var d = new Date();
             d.setTime(d.getTime() + c * 1000);
             document.cookie = a + "=" + escape(b) + (c ? ";expires=" + d.toGMTString() : "") + ";path=/"
-        }, _gc = function (a) {
+        },
+        _gc = function(a) {
             var b = document.cookie;
             var c = b.indexOf(a + "=");
             if (c != -1) {
@@ -266,19 +254,19 @@ var JIATHIS_CONFIGS = {
                 return unescape(b.substring(c, d))
             }
             return ""
-        }, _MR = function (w, d, a) {
+        },
+        _MR = function(w, d, a) {
             w /= d;
             w = Math.round(w * 10) / 10;
-            if ((w + "").length > 4) {
+            if ((w + "").length >= 4) {
                 w = Math.round(w)
             }
             return w + a
-        }, _FN = function (a) {
-            var d = ("" + a).split(".")
-                .shift()
-                .length;
+        },
+        _FN = function(a) {
+            var d = ("" + a).split(".").shift().length;
             if (isNaN(a)) {
-                return '--'
+                return '0'
             } else {
                 if (d < 4) {
                     return Math.round(a)
@@ -294,8 +282,10 @@ var JIATHIS_CONFIGS = {
                     }
                 }
             }
-        }, _rck = function (X) {
-            var A = {}, D = (new Date()).getTime(),
+        },
+        _rck = function(X) {
+            var A = {},
+                D = (new Date()).getTime(),
                 E, F, G, H, V = String(X);
             if (V !== undefined && V.indexOf("|") > -1) {
                 E = V.split('|');
@@ -308,14 +298,16 @@ var JIATHIS_CONFIGS = {
                 return A
             }
             return false
-        }, _gck = function () {
+        },
+        _gck = function() {
             var A = _gc("jiathis_rdc"),
                 B = {};
             if (A) {
                 B = eval("(" + A + ")")
             }
             return B
-        }, _sck = function (U, S, T) {
+        },
+        _sck = function(U, S, T) {
             var A = _gck();
             if (A[U]) {
                 delete A[U]
@@ -323,7 +315,8 @@ var JIATHIS_CONFIGS = {
             $CKE.shares = parseInt(S);
             A[U] = '"' + parseInt(S) + '|' + T + '"';
             _sc("jiathis_rdc", _otc(A), 0)
-        }, _otc = function (o) {
+        },
+        _otc = function(o) {
             var A = '',
                 B = '';
             for (var k in o) {
@@ -331,7 +324,8 @@ var JIATHIS_CONFIGS = {
                 B = !B ? ',' : B
             }
             return "{" + A + "}"
-        }, _renderCounter = function (a, b) {
+        },
+        _renderCounter = function(a, b) {
             for (var k in a) {
                 var c = d.getElementById(a[k]);
                 if (c) {
@@ -339,7 +333,8 @@ var JIATHIS_CONFIGS = {
                     c.innerHTML = _FN(b)
                 }
             }
-        }, _custom = function () {
+        },
+        _custom = function() {
             var u = conf.services_custom;
             if (u) {
                 if (!(u instanceof Array)) {
@@ -347,31 +342,16 @@ var JIATHIS_CONFIGS = {
                 }
                 for (var a = 0; a < u.length; a++) {
                     var c = u[a];
-                    if (c.name && c
-                        .icon && c
-                        .url) {
-                        c.code = c
-                            .url = c
-                            .url
-                            .replace(/ /g, "");
-                        c.code = c
-                            .code
-                            .split("//")
-                            .pop()
-                            .split("?")
-                            .shift()
-                            .split("/")
-                            .shift()
-                            .toLowerCase();
+                    if (c.name && c.icon && c.url) {
+                        c.code = c.url = c.url.replace(/ /g, "");
+                        c.code = c.code.split("//").pop().split("?").shift().split("/").shift().toLowerCase();
                         JIATHIS_CONFIGS.custom[c.code] = c;
-                        JIATHIS_CONFIGS.servicelist[_ckpre + c.code] = c
-                            .name + ',' + c
-                            .code + ',' + c
-                            .code
+                        JIATHIS_CONFIGS.servicelist[_ckpre + c.code] = c.name + ',' + c.code + ',' + c.code
                     }
                 }
             }
-        }, _gw = function (a, b, c) {
+        },
+        _gw = function(a, b, c) {
             var d = "";
             do {
                 d = a[b++]
@@ -387,60 +367,39 @@ var JIATHIS_CONFIGS = {
                 }
             }
             return d
-        }, _renderToolbox = function () {
+        },
+        _renderToolbox = function() {
             _custom();
-            var e = conf.shareImg || {}, hidemore = conf
-                .hideMore || false;
+            var e = conf.shareImg || {},
+                hidemore = conf.hideMore || false;
             e.showType && creElm({
                 src: JIATHIS_CONFIGS.codehost + "/plugin.shareimg.js",
                 charset: "utf-8"
             }, "script", head);
-            var f = conf.nota ? true : false;
-            if (JIATHIS_CONFIGS.uid && wlh && !f) {
-                var g = true;
-                if (typeof (conf.nota) == 'undefined') {
-                    var j = ['xunlei.com', 'cnzz.com', 'taobao.com', '360.cn'];
-                    for (var k in j) {
-                        if (typeof (j[k]) == 'string') {
-                            if (wlh.match(new RegExp(j[k]))) {
-                                g = false;
-                                break
-                            }
-                        }
-                    }
-                }
-                if (g) {
-                    creElm({
-                        src: "http://tajs.qq.com/jiathis.php?uid=" + parseInt(JIATHIS_CONFIGS.uid) + "&dm=" + wlh,
-                        charset: "utf-8"
-                    }, "script")
-                }
-            }
-            var l = "qzone,tsina,tqq,renren,kaixin001,t163,tsohu,douban,taobao,xiaoyou,msn,139,sohu,tieba,baidu,google",
-                _jck = JIATHIS_CONFIGS.jtck || l,
-                jck = _uniqueConcat(_jck.split(","), l
-                    .split(",")),
-                parentServices = {}, _WR = {}, h = d.getElementsByTagName("a"),
-                _url = String(conf.url || d
-                    .location),
+            var f = "qzone,tsina,tqq,weixin,renren,kaixin001,t163,tsohu,douban,taobao,xiaoyou,msn,139,sohu,tieba,baidu,google",
+                _jck = JIATHIS_CONFIGS.jtck || f,
+                jck = _uniqueConcat(_jck.split(","), f.split(",")),
+                parentServices = {},
+                _WR = {},
+                h = d.getElementsByTagName("a"),
+                _url = String(conf.url || d.location),
                 _CF = null,
                 webid, likeid, tl, fl, bt, preferred;
             for (var i = 0, ci, tmp; ci = h[i++];) {
                 if (/\bjiathis\b/.test(ci.className)) {
-                    ci.onmouseout = $CKE
-                        .out;
-                    ci.onmousemove = $CKE
-                        .move;
-                    !hidemore && (ci.onclick = $CKE
-                        .center);
-                    ci.onmouseover = $CKE
-                        .over;
-                    ci.hideFocus = true;
+                    if (jiathis_is_mobile()) {
+                        ci.href = jiathis_more_href()
+                    } else {
+                        ci.onmouseout = $CKE.out;
+                        ci.onmousemove = $CKE.move;
+                        !hidemore && (ci.onclick = $CKE.center);
+                        ci.onmouseover = $CKE.over;
+                        ci.hideFocus = true
+                    }
                     continue
                 }
-                if (ci.className && (tmp = ci.className
-                    .match(/^jiathis_counter_(\w+)(?:\_|$)(.*)$/)) && tmp[1]) {
-                    if (typeof ($CKE.containers) == "object") {
+                if (ci.className && (tmp = ci.className.match(/^jiathis_counter_(\w+)(?:\_|$)(.*)$/)) && tmp[1]) {
+                    if (typeof($CKE.containers) == "object") {
                         if (!_CF) {
                             _CF = creElm({
                                 href: JIATHIS_CONFIGS.codehost + "/css/jiathis_counter.css",
@@ -448,9 +407,7 @@ var JIATHIS_CONFIGS = {
                                 type: "text/css"
                             }, "link")
                         }
-                        if (ci.firstChild && ci
-                            .firstChild
-                            .nodeType == 3) {
+                        if (ci.firstChild && ci.firstChild.nodeType == 3) {
                             ci.removeChild(ci.firstChild)
                         }
                         if (!ci.firstChild) {
@@ -459,67 +416,59 @@ var JIATHIS_CONFIGS = {
                                 K = "jiathis_counter_" + i,
                                 E = d.createElement("span");
                             E.className = 'jiathis_button_expanded jiathis_counter jiathis_' + B + '_style';
-                            !hidemore && (E.onclick = function () {
+                            !hidemore && (E.onclick = function() {
                                 $CKE.center()
                             });
                             E.id = K;
-                            E.appendChild(d.createTextNode("--"));
+                            E.appendChild(d.createTextNode("0"));
                             if (C) {
-                                E.style
-                                    .cssText = C
+                                E.style.cssText = C
                             }
                             ci.appendChild(E)
                         }
-                        $CKE.containers
-                            .push(K)
+                        $CKE.containers.push(K)
                     }
                     continue
                 }
                 webid = '', likeid = '', tl = false, fl = false, bt = false, preferred = false;
-                if (ci.className && (tmp = ci.className
-                    .match(/^jiathis_button_([\w\.]+)(?:\s|$)/)) && tmp[1]) {
-                    if (tmp[1].indexOf("tools") > -1 || tmp[1]
-                        .indexOf("icons") > -1) {
+                if (ci.className && (tmp = ci.className.match(/^jiathis_button_([\w\.]+)(?:\s|$)/)) && tmp[1]) {
+                    if (tmp[1].indexOf("tools") > -1 || tmp[1].indexOf("icons") > -1) {
                         if (tmp[1].indexOf("tools") > -1) {
                             tl = true;
-                            var s = ci.className
-                                .match(/jiathis_button_tools_([0-9]+)(?:\s|$)/)
+                            var s = ci.className.match(/jiathis_button_tools_([0-9]+)(?:\s|$)/)
                         } else {
-                            var s = ci.className
-                                .match(/jiathis_button_icons_([0-9]+)(?:\s|$)/)
+                            var s = ci.className.match(/jiathis_button_icons_([0-9]+)(?:\s|$)/)
                         }
-                        var m = ((s && s.length) ? Math.min(16, Math.max(1, parseInt(s[1]))) : 1) - 1;
-                        webid = _gw(jck, m, parentServices);
+                        var g = ((s && s.length) ? Math.min(16, Math.max(1, parseInt(s[1]))) : 1) - 1;
+                        webid = _gw(jck, g, parentServices);
                         preferred = true
                     } else {
                         webid = tmp[1]
                     }
                     bt = true
                 }
-                if (ci.className && (tmp = ci.className
-                    .match(/^jiathis_follow_(\w+)$/)) && tmp[1]) {
+                if (ci.className && (tmp = ci.className.match(/^jiathis_follow_(\w+)$/)) && tmp[1]) {
                     webid = tmp[1];
                     fl = true
                 }
                 if (webid && _lists[_ckpre + webid]) {
                     bt && (parentServices[webid] = 1);
-                    var n = function (a, b) {
-                        for (var c in b) {
-                            var o = b[c];
-                            if (o.preferred && o
-                                .webid == a) {
-                                return c
+                    var j = function(a, b) {
+                            for (var c in b) {
+                                var o = b[c];
+                                if (o.preferred && o.webid == a) {
+                                    return c
+                                }
                             }
-                        }
-                        return false
-                    }, key = n(webid, _WR);
-                    if (key !== false) {
-                        var T = _WR[key] || {};
-                        if (T.webid && T
-                            .ci) {
+                            return false
+                        },
+                        t = j(webid, _WR);
+                    if (t !== false) {
+                        var T = _WR[t] || {};
+                        if (T.webid && T.ci) {
                             TWID = _gw(jck, 0, parentServices);
                             T.bt && (parentServices[TWID] = 1);
-                            _WR[key] = {
+                            _WR[t] = {
                                 "ci": T.ci,
                                 "webid": TWID,
                                 "bt": T.bt,
@@ -540,32 +489,61 @@ var JIATHIS_CONFIGS = {
                 } else if (bt || fl) {
                     ci.innerHTML = ""
                 }
-                if (ci.className && (tmp = ci.className
-                    .match(/^jiathis_like_(\w+)$/)) && tmp[1]) {
+                if (ci.className && (tmp = ci.className.match(/^jiathis_like_(\w+)$/)) && tmp[1]) {
                     likeid = tmp[1];
                     var o = _gp(ci, 'data'),
                         ifsrc = '',
-                        likeurl = _url;
+                        likeurl = _url,
+                        mt = '';
                     if (likeid == 'qzone') {
-                        var p = _gv(o.qq, false);
-                        if (p) {
-                            likeurl = "http://user.qzone.qq.com/" + p;
+                        var l = _gv(o.qq, false);
+                        if (l) {
+                            likeurl = "http://user.qzone.qq.com/" + l;
                             ifsrc = 'http://open.qzone.qq.com/like?url=' + encodeURIComponent(likeurl) + '&type=' + _gv(o.type, 'button_num')
                         } else {
                             ifsrc = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_likeurl?url=' + encodeURIComponent(likeurl) + '&showcount=' + _gv(o.showcount, 1) + '&style=' + _gv(o.style, 2)
                         }
                     } else if (likeid == 'renren') {
-                        var q = _gv(o.pageid, false);
-                        likeurl = q ? ("http://page.renren.com/" + q) : likeurl;
+                        var n = _gv(o.pageid, false);
+                        likeurl = n ? ("http://page.renren.com/" + n) : likeurl;
                         ifsrc = 'http://www.connect.renren.com/like?url=' + encodeURIComponent(likeurl) + '&showfaces=' + _gv(o.showfaces, 'false')
                     } else if (likeid == 'kaixin001') {
                         ifsrc = 'http://www.kaixin001.com/like/like.php?url=' + encodeURIComponent(likeurl) + '&show_faces=' + _gv(o.show_faces, 'false')
+                    } else if (likeid == 'tsina' || likeid == 'tsinat') {
+                        var p = jiathis_get_des(),
+                            pic = '',
+                            title = conf.title || document.title,
+                            p = conf.summary == undefined ? p : conf.summary,
+                            pic = conf.pic == undefined ? jiathis_get_pic() : conf.pic,
+                            url = conf.url == undefined ? document.location : conf.url
                     }
                     if (ifsrc) {
-                        ci.innerHTML = '<span class="jiathis_txt jiathis_separator jialike"><iframe src="' + ifsrc + '" allowTransparency="true" scrolling="no" border="0" frameborder="0" style="width:' + _gv(o.width, 200) + 'px;height:' + _gv(o.height, 25) + 'px"></iframe></span>'
-                        //ci.innerHTML = '<span class="jiathis_txt jiathis_separator jialike"></span>'
+                        ci.innerHTML = '<span class="jiathis_txt jiathis_separator jialike"><iframe src="' + ifsrc + '" allowTransparency="true" scrolling="no" border="0" frameborder="0" style="width:' + _gv(o.width, 200) + 'px;height:' + _gv(o.height, 38) + 'px;' + mt + '"></iframe></span>'
                     } else {
-                        ci.innerHTML = ''
+                        if (likeid == 'tsinat' || likeid == 'tsina') {
+                            if (likeid == 'tsinat') {
+                                ci.innerHTML = '<span class="jiathis_txt jiathis_separator jialike"><wb:like type="text"></wb:like></span>'
+                            } else {
+                                ci.innerHTML = '<span class="jiathis_txt jiathis_separator jialike"><wb:like type="number"></wb:like></span>'
+                            }
+                            var q = ['og:type=webpage', 'og:url=' + encodeURIComponent(url) + '', 'og:title=' + encodeURIComponent(title) + '', 'og:image=' + encodeURIComponent(pic) + '', 'og:description=' + encodeURIComponent(p) + ''];
+                            for (m = 0; m < q.length; m++) {
+                                met = document.createElement('meta');
+                                var r = q[m].split('=');
+                                var t = r[0];
+                                var u = r[1];
+                                met.setAttribute('property', t);
+                                met.content = decodeURIComponent(u);
+                                head.appendChild(met)
+                            }
+                            creElm({
+                                src: "http://tjs.sjs.sinajs.cn/open/api/js/wb.js",
+                                charset: "utf-8",
+                                type: "text/javascript"
+                            }, "script")
+                        } else {
+                            ci.innerHTML = ''
+                        }
                     }
                 }
             }
@@ -577,43 +555,40 @@ var JIATHIS_CONFIGS = {
                         fl = o.fl,
                         tl = o.tl,
                         webid = o.webid;
-                    if (typeof (ci) == "object" && ci.innerHTML
-                        .indexOf('jtico jtico_') == -1) {
-                        var r = _lists[_ckpre + webid].split(',');
-                        var t = ci.innerHTML
-                            .replace(/^\s+|\s+$/g, "");
-                        var u = JIATHIS_CONFIGS.custom[webid] || {};
-                        var v = (u.icon) ? ' style="background:url(' + u.icon + ') no-repeat left;"' : '';
-                        if (tl || t) {
-                            t = t ? t : r[0];
-                            ci.innerHTML = '<span class="jiathis_txt jiathis_separator jtico jtico_' + webid + '"' + v + '>' + t + '</span>'
+                    if (typeof(ci) == "object" && ci.innerHTML.indexOf('jtico jtico_') == -1) {
+                        var v = _lists[_ckpre + webid].split(',');
+                        var w = ci.innerHTML.replace(/^\s+|\s+$/g, "");
+                        var x = JIATHIS_CONFIGS.custom[webid] || {};
+                        var y = (x.icon) ? ' style="background:url(' + x.icon + ') no-repeat left;"' : '';
+                        if (tl || w) {
+                            w = w ? w : v[0];
+                            ci.innerHTML = '<span class="jiathis_txt jiathis_separator jtico jtico_' + webid + '"' + y + '>' + w + '</span>'
                         } else {
-                            ci.innerHTML = '<span class="jiathis_txt jtico jtico_' + webid + '"' + v + '></span>'
-                        }
-                        if (fl) {
-                            ci.onclick = function (a) {
-                                return function () {
-                                    if (a.rel) {
+                            ci.innerHTML = '<span class="jiathis_txt jtico jtico_' + webid + '"' + y + '></span>'
+                        } if (fl) {
+                            ci.onclick = function(a) {
+                                return function() {
+                                    if (a.className.match(/weixin$/)) {
+                                        jiathis_popup(a.rel)
+                                    } else {
                                         window.open(a.rel, '')
                                     }
                                 }
                             }(ci);
-                            ci.title = ci
-                                .title ? ci
-                                .title : "在" + r[0] + "关注我们"
+                            ci.title = ci.title ? ci.title : "在" + v[0] + "关注我们"
                         } else {
-                            ci.onclick = function (a) {
-                                return function () {
+                            ci.onclick = function(a) {
+                                return function() {
                                     jiathis_sendto(a)
                                 }
                             }(webid);
                             if (!ci.title) {
                                 if (webid == 'copy' || webid == 'print') {
-                                    ci.title = r[0]
+                                    ci.title = v[0]
                                 } else if (webid == 'fav') {
-                                    ci.title = "加入" + r[0]
+                                    ci.title = "加入" + v[0]
                                 } else {
-                                    ci.title = "分享到" + r[0]
+                                    ci.title = "分享到" + v[0]
                                 }
                             }
                         }
@@ -623,44 +598,42 @@ var JIATHIS_CONFIGS = {
             if (_CF) {
                 $CKE.counter()
             }
-        }, _gv = function (v, a) {
+        },
+        _gv = function(v, a) {
             if (v === undefined) {
                 return a
             }
             return v
-        }, _gp = function (a, b) {
+        },
+        _gp = function(a, b) {
             var p = [],
                 c = a.attributes[b];
             if (c) {
-                o = c.nodeValue
-                    .split('&') || '';
+                o = c.nodeValue.split('&') || '';
                 for (var i = o.length; i--;) {
                     var j = o[i].split('=');
                     p[j[0]] = j[1]
                 }
             }
             return p
-        }, _rec = function (e) {
+        },
+        _rec = function(e) {
             if (!_reced) {
-                if ( !! e.origin && e
-                    .origin
-                    .slice(-12) == ".jiathis.com") {
-                    if (e.data && e
-                        .data != "FALSE") {
-                        JIATHIS_CONFIGS.jtck = e
-                            .data
+                if (!!e.origin && e.origin.slice(-12) == ".jiathis.com") {
+                    if (e.data && e.data != "FALSE") {
+                        JIATHIS_CONFIGS.jtck = e.data
                     }
                 }
                 _renderToolbox();
                 _req();
                 _reced = true
             }
-        }, _req = function () {
+        },
+        _req = function() {
             var a, s, E = encodeURIComponent,
                 o = _grf(_ref),
                 T = document.title || "",
-                Y = window.location
-                    .href || "",
+                Y = window.location.href || "",
                 an = Y ? Y.indexOf(JIATHIS_CONFIGS.jtcbk) : -1,
                 d1 = _gd(o.host),
                 d2 = _gd(Y),
@@ -668,34 +641,25 @@ var JIATHIS_CONFIGS = {
                 f = (d1 && d2 && d1 == d2) ? false : true;
             if (an > -1) {
                 a = Y.substr(an);
-                q = a.split("#")
-                    .pop()
-                    .split("-")
-                    .pop()
-                    .split("=")
-                    .pop();
+                q = a.split("#").pop().split("-").pop().split("=").pop();
                 q = _lists[_ckpre + q] ? q : ''
             }
             q = (!q && o.webid) ? o.webid : q;
             if (q && f) {
                 s = 'rsc=' + q + '&rnm=' + parseInt(JIATHIS_CONFIGS.uid) + '&rfh=' + E(o.host) + '&rfp=' + E(o.path) + '&pre=' + E(Y) + '&tit=' + escape(T);
-                (new Image).src = JIATHIS_CONFIGS
-                    .lhost + "/l.gif?" + s
+                (new Image).src = JIATHIS_CONFIGS.lhost + "/l.gif?" + s
             }
-        }, _gd = function (o) {
+        },
+        _gd = function(o) {
             var d = null;
             if (o) {
-                d = o.split(".")
-                    .slice(-2)
-                    .join(".");
-                d = (d == "com.cn") ? o.split(".")
-                    .slice(-3)
-                    .join(".") : d;
-                d = d.split("/")
-                    .shift()
+                d = o.split(".").slice(-2).join(".");
+                d = (d == "com.cn") ? o.split(".").slice(-3).join(".") : d;
+                d = d.split("/").shift()
             }
             return d
-        }, _grf = function (r) {
+        },
+        _grf = function(r) {
             var h = "",
                 p = "",
                 q = "",
@@ -720,7 +684,30 @@ var JIATHIS_CONFIGS = {
                 path: p,
                 webid: q
             }
-        }, jiathis_utility_ifr = !! window.postMessage ? creElm({
+        },
+        jiathis_is_mobile = function() {
+            var a = navigator.userAgent.toLowerCase().match(/ucweb|ios|mobile|ipad|ipod|blackberry|motorola|YahooSeeker|symbian|nokia|android|iphone os|windows ce|rv:1.2.3.4|midp/i);
+            var b = parseInt(window.screen.width);
+            var c = parseInt(window.screen.height);
+            var d = false;
+            if (a) {
+                if (b < c) {
+                    d = true
+                }
+            }
+            return d
+        },
+        jiathis_more_href = function() {
+            var a = jiathis_get_des(),
+                pic = jiathis_get_pic(),
+                G = '?url=' + encodeURIComponent(String(conf.url || document.location)),
+                T = '&title=' + encodeURIComponent(String(conf.title || document.title)),
+                S = conf.summary ? '&summary=' + encodeURIComponent(conf.summary) : (a ? '&summary=' + encodeURIComponent(a) : ''),
+                F = JIATHIS_CONFIGS.uid ? '&uid=' + parseInt(JIATHIS_CONFIGS.uid) : '&uid=1626433',
+                P = conf.pic ? '&pic=' + encodeURIComponent(conf.pic) : (pic ? '&pic=' + encodeURIComponent(pic) : '');
+            return 'http://www.jiathis.com/share' + G + T + S + F + P
+        },
+        jiathis_utility_ifr = !!window.postMessage ? creElm({
             style: "display:none;",
             frameBorder: 0,
             src: JIATHIS_CONFIGS.codehost + "/jiathis_utility.html"
@@ -737,7 +724,8 @@ var JIATHIS_CONFIGS = {
             style: "position:" + (/firefox/.test(ua) ? "fixed" : "absolute") + ";display:none;filter:alpha(opacity=0);opacity:0",
             frameBorder: 0
         }, "iframe"),
-        timer, inputTimer, list, clist, h, texts = {}, clickpopjs, ckcpjs;
+        timer, inputTimer, list, clist, h, texts = {},
+        clickpopjs, ckcpjs;
     creElm({
         href: JIATHIS_CONFIGS.codehost + "/css/jiathis_share.css",
         rel: "stylesheet",
@@ -749,62 +737,39 @@ var JIATHIS_CONFIGS = {
         centerpop: div1,
         shares: 0,
         containers: [],
-        disappear: function (a) {
+        disappear: function(a) {
             var b = window.event || a,
-                t = b.srcElement || b
-                    .target,
-                tn = t.tagName ? t
-                    .tagName
-                    .toUpperCase() : "",
-                c = div.contains ? div
-                    .contains(t) : !! (div.compareDocumentPosition(t) & 16),
-                c1 = div1.contains ? div1
-                    .contains(t) : !! (div1.compareDocumentPosition(t) & 16),
+                t = b.srcElement || b.target,
+                tn = t.tagName ? t.tagName.toUpperCase() : "",
+                c = div.contains ? div.contains(t) : !!(div.compareDocumentPosition(t) & 16),
+                c1 = div1.contains ? div1.contains(t) : !!(div1.compareDocumentPosition(t) & 16),
                 c2 = true;
             if (tn == "IMG") {
-                c2 = t.parentNode
-                    .className
-                    .indexOf("jiathis") == "-1"
+                c2 = t.parentNode.className.indexOf("jiathis") == "-1"
             } else if (tn == "A") {
-                c2 = t.className
-                    .indexOf("jiathis") == "-1"
+                c2 = t.className.indexOf("jiathis") == "-1"
             } else if (tn == "SPAN") {
-                c2 = t.className
-                    .indexOf("jiathis_counter") == "-1"
+                c2 = t.className.indexOf("jiathis_counter") == "-1"
             }
             if (!c && !c1 && c2) {
-                iframe.style
-                    .display = div1
-                    .style
-                    .display = 'none'
+                iframe.style.display = div1.style.display = 'none'
             }
         },
-        over: function () {
+        over: function() {
             var s, T = this,
-                timerCont, fn = function () {
-                    timerCont = setInterval(function () {
+                timerCont, fn = function() {
+                    timerCont = setInterval(function() {
                         if (div.innerHTML) {
                             var p = getP(T),
                                 wh = getWH(),
                                 tl = getS();
                             with(div.style) {
                                 display = "block";
-                                var a = T.style
-                                    .display;
-                                T.style
-                                    .display = "block";
-                                top = (p.t + T
-                                    .offsetHeight + div
-                                    .offsetHeight > wh
-                                    .h + tl
-                                    .t ? p
-                                    .t - div
-                                    .offsetHeight : p
-                                    .t + T
-                                    .offsetHeight) + "px";
+                                var a = T.style.display;
+                                T.style.display = "block";
+                                top = (p.t + T.offsetHeight + div.offsetHeight > wh.h + tl.t ? p.t - div.offsetHeight : p.t + T.offsetHeight) + "px";
                                 left = p.l + "px";
-                                T.style
-                                    .display = a
+                                T.style.display = a
                             }
                             with(iframe.style) {
                                 top = div.offsetTop + "px";
@@ -824,54 +789,40 @@ var JIATHIS_CONFIGS = {
                     charset: "utf-8"
                 }, "script", head);
                 clickpopjs.onloaded = 0;
-                clickpopjs.onload = function () {
+                clickpopjs.onload = function() {
                     clickpopjs.onloaded = 1;
                     !ie && fn()
                 };
-                clickpopjs.onreadystatechange = function () {
-                    /complete|loaded/.test(clickpopjs.readyState) && !clickpopjs
-                        .onloaded && fn()
+                clickpopjs.onreadystatechange = function() {
+                    /complete|loaded/.test(clickpopjs.readyState) && !clickpopjs.onloaded && fn()
                 }
             } else {
                 fn()
             }
             return false
         },
-        out: function () {
-            timer = setTimeout(function () {
-                div.style
-                    .display = "none";
-                div1.style
-                    .display != "block" && (iframe.style
-                    .display = "none")
+        out: function() {
+            timer = setTimeout(function() {
+                div.style.display = "none";
+                div1.style.display != "block" && (iframe.style.display = "none")
             }, 100)
         },
-        move: function () {
+        move: function() {
             clearTimeout(timer)
         },
-        center: function () {
-            div.style
-                .display = iframe
-                .style
-                .display = "none";
+        center: function() {
+            div.style.display = iframe.style.display = "none";
             if (!ckcpjs) {
                 ckcpjs = creElm({
                     src: JIATHIS_CONFIGS.codehost + "/ckecenterpop.js",
                     charset: "utf-8"
                 }, "script", head);
-                db.style
-                    .position = "static"
+                db.style.position = "static"
             } else {
                 var a = getS();
-                div1.style
-                    .display = "block";
-                div1.style
-                    .margin = (-div1.offsetHeight / 2 + a
-                    .t) + "px " + (-div1.offsetWidth / 2 + a
-                    .l) + "px";
-                list = d.getElementById("jiathis_sharelist"), clist = list
-                    .cloneNode(true), h = clist
-                    .getElementsByTagName("input");
+                div1.style.display = "block";
+                div1.style.margin = (-div1.offsetHeight / 2 + a.t) + "px " + (-div1.offsetWidth / 2 + a.l) + "px";
+                list = d.getElementById("jiathis_sharelist"), clist = list.cloneNode(true), h = clist.getElementsByTagName("input");
                 for (var i = 0, ci; ci = h[i++];) {
                     texts[ci.value] = ci.parentNode
                 }
@@ -879,38 +830,33 @@ var JIATHIS_CONFIGS = {
                     left = top = "50%";
                     width = div1.offsetWidth + "px";
                     height = div1.offsetHeight + "px";
-                    margin = div1.style
-                        .margin;
+                    margin = div1.style.margin;
                     display = "block"
                 }
             }
             return false
         },
-        choose: function (o) {
+        choose: function(o) {
             clearTimeout(inputTimer);
-            inputTimer = setTimeout(function () {
-                var s = o.value
-                    .replace(/^\s+|\s+$/, ""),
+            inputTimer = setTimeout(function() {
+                var s = o.value.replace(/^\s+|\s+$/, ""),
                     frag = d.createDocumentFragment();
                 for (var p in texts) {
-                    eval("var f = /" + (s || ".") + "/ig.test(p)"); !! texts[p].cloneNode && (f && frag.appendChild(texts[p].cloneNode(true)))
+                    eval("var f = /" + (s || ".") + "/ig.test(p)");
+                    !!texts[p].cloneNode && (f && frag.appendChild(texts[p].cloneNode(true)))
                 }
                 list.innerHTML = "";
                 list.appendChild(frag)
             }, 100)
         },
-        centerClose: function () {
-            iframe.style
-                .display = div1
-                .style
-                .display = "none"
+        centerClose: function() {
+            iframe.style.display = div1.style.display = "none"
         },
-        rdc: function (o) {
+        rdc: function(o) {
             if (o.shares !== undefined) {
                 var A = $CKE.containers,
                     B = parseInt(o.shares),
-                    C = String(conf.url || d
-                        .location),
+                    C = String(conf.url || d.location),
                     D = _gck(),
                     J = _rck(D[C]),
                     T = (new Date()).getTime(),
@@ -922,16 +868,14 @@ var JIATHIS_CONFIGS = {
                 _renderCounter(A, S)
             }
         },
-        counter: function () {
+        counter: function() {
             var A = $CKE.containers,
                 B = _gck(),
-                C = String(conf.url || d
-                    .location),
+                C = String(conf.url || d.location),
                 J = _rck(B[C]),
                 R = true;
             if (J && J.timedeff <= 60) {
-                $CKE.shares = J
-                    .shares;
+                $CKE.shares = J.shares;
                 _renderCounter(A, J.shares);
                 R = false
             }
@@ -942,77 +886,79 @@ var JIATHIS_CONFIGS = {
                 }, "script", head)
             }
         },
-        open: function (A) {
+        open: function(A) {
             creElm({
                 src: A,
                 charset: "utf-8"
             }, "script", head)
         },
-        fireEvent: function (F, O) {
+        fireEvent: function(F, O) {
             if (F) {
-                F = typeof (F) == "function" ? F : eval(F);
+                F = typeof(F) == "function" ? F : eval(F);
                 F(O)
             }
         }
     };
-    if ( !! window.addEventListener) { !! window.addEventListener && window
-            .addEventListener("message", _rec, false)
+    if (!!window.addEventListener) {
+        !!window.addEventListener && window.addEventListener("message", _rec, false)
     } else {
-        if ( !! window.postMessage) {
-            ( !! window.attachEvent && window
-                .attachEvent("onmessage", _rec))
+        if (!!window.postMessage) {
+            (!!window.attachEvent && window.attachEvent("onmessage", _rec))
         } else {
             _renderToolbox()
         }
     }
-    div.onmouseover = function () {
+    div.onmouseover = function() {
         clearTimeout(timer)
     };
-    div.onmouseout = function () {
+    div.onmouseout = function() {
         $CKE.out()
     };
-    ie ? d.attachEvent("onclick", $CKE.disappear) : d
-        .addEventListener("click", $CKE.disappear, false);
-    if (!conf.do_not_track && wlh) {
-        d.write('<script type="text/javascript" src="' + JIATHIS_CONFIGS.codehost + '/plugin.client.js" charset="utf-8"></script>')
+    ie ? d.attachEvent("onclick", $CKE.disappear) : d.addEventListener("click", $CKE.disappear, false);
+    if (!conf.do_not_track && wlh && typeof(_gnayTrack) != 'object') {
+        //d.write('<script type="text/javascript" src="' + JIATHIS_CONFIGS.codehost + '/plugin.client.js" charset="utf-8"></script>')
     }
 })();
 
 function jiathis_sendto(a) {
+    var b = jiathis_get_des(),
+        pic = jiathis_get_pic();
     try {
-        var b = jiathis_config || {}
+        var c = jiathis_config || {}
     } catch (e) {
-        var b = {}
+        var c = {}
     };
-    var c = encodeURIComponent,
-        cu = JIATHIS_CONFIGS.custom[a] || {}, U = String(b.url || document
-            .location),
+    var d = encodeURIComponent,
+        cu = JIATHIS_CONFIGS.custom[a] || {},
+        U = String(c.url || document.location),
         W = "?webid=" + a,
-        G = "&url=" + c(U),
-        T = "&title=" + c(b.title || document
-            .title),
-        S = b.summary ? "&summary=" + c(b.summary) : "",
+        G = "&url=" + d(U),
+        T = "&title=" + d(c.title || document.title),
+        S = c.summary ? "&summary=" + d(c.summary) : (b ? "&summary=" + d(b) : ""),
         F = JIATHIS_CONFIGS.uid ? "&uid=" + parseInt(JIATHIS_CONFIGS.uid) : "",
-        E = b.data_track_clickback ? "&jtss=1" : "",
-        K = (b.appkey && b
-            .appkey[a]) ? "&appkey=" + b.appkey[a] : "",
-        P = b.pic ? "&pic=" + c(b.pic) : "",
-        C = $CKE.jid ? "&jid=" + $CKE
-            .jid : "",
-        R = (b.ralateuid && b
-            .ralateuid[a]) ? "&ralateuid=" + b.ralateuid[a] : "",
-        Q = (b.evt && b
-            .evt['share']) ? b.evt['share'] : null,
+        E = c.data_track_clickback ? "&jtss=1" : "",
+        K = (c.appkey && c.appkey[a]) ? "&appkey=" + c.appkey[a] : "",
+        P = c.pic ? "&pic=" + d(c.pic) : (pic ? "&pic=" + d(pic) : ''),
+        C = $CKE.jid ? "&jid=" + $CKE.jid : "",
+        R = (c.ralateuid && c.ralateuid[a]) ? "&ralateuid=" + c.ralateuid[a] : "",
+        Q = (c.evt && c.evt['share']) ? c.evt['share'] : null,
         A = 'http://s.jiathis.com/',
-        X = (cu.name && cu
-            .url) ? "&acn=" + c(cu.name) + "&acu=" + c(cu.url) : "",
-        B = A + W + G + T + F + E + K + P + R + S + X + C;
-    if (a == 'copy' || a == 'fav' || a == 'print') {
-        $CKE.open(B);
+        X = (cu.name && cu.url) ? "&acn=" + d(cu.name) + "&acu=" + d(cu.url) : "",
+        SU = c.shortUrl == false ? '' : '&su=1';
+    B = A + W + G + T + F + E + K + P + R + S + X + C + SU;
+    if (a == 'copy' || a == 'fav' || a == 'print' || a == 'weixin') {
+        //$CKE.open(B);
         if (a == 'copy') {
             jiathis_copyUrl()
         } else if (a == 'fav') {
             jiathis_addBookmark()
+        } else if (a == 'weixin') {
+            WT = c.title || document.title;
+            WS = c.summary ? c.summary : (b ? b : "");
+            WU = G.replace('&url=', '');
+            AT = WT + WS;
+            AS = jiathis_SetString(AT, 110);
+            jiathis_sharewx(d(AS + '...'), WU)
         } else {
             window.print()
         }
@@ -1031,43 +977,36 @@ function jiathis_sendto(a) {
     });
     return false
 }
+
 function jiathis_addBookmark() {
     try {
         var d = jiathis_config || {}
     } catch (e) {
         var d = {}
     };
-    var a = d.title || document
-        .title;
-    var b = d.url || parent
-        .location
-        .href;
+    var a = d.title || document.title;
+    var b = d.url || parent.location.href;
     var c = window.sidebar;
-    if (c && !! c.addPanel) {
+    if (c && !!c.addPanel) {
         c.addPanel(a, b, "")
     } else if (document.all) {
-        window.external
-            .AddFavorite(b, a)
+        window.external.AddFavorite(b, a)
     } else {
         alert('请按 Ctrl + D 为你的浏览器添加书签！')
     }
 }
+
 function jiathis_copyUrl() {
     try {
         var d = jiathis_config || {}
     } catch (e) {
         var d = {}
     };
-    var a = d.url || this
-        .location
-        .href;
-    var b = d.title || document
-        .title;
+    var a = d.url || this.location.href;
+    var b = d.title || document.title;
     var c = b + " " + a;
-    var f = navigator.userAgent
-        .toLowerCase();
-    var g = f.indexOf('opera') != -1 && opera
-        .version();
+    var f = navigator.userAgent.toLowerCase();
+    var g = f.indexOf('opera') != -1 && opera.version();
     var h = (f.indexOf('msie') != -1 && !g) && f.substr(f.indexOf('msie') + 5, 3);
     if (h) {
         clipboardData.setData('Text', c);
@@ -1077,4 +1016,149 @@ function jiathis_copyUrl() {
     } else {
         alert('目前只支持IE，请复制地址栏URL,推荐给你的QQ/MSN好友！')
     }
+}
+
+function jiathis_get_pic() {
+    var a = document.getElementsByTagName('img'),
+        pic = '',
+        con = '',
+        picArr = new Array();
+    for (i = 0; i < a.length; i++) {
+        var b = parseInt(a.item(i).offsetWidth),
+            imgH = parseInt(a.item(i).offsetHeight),
+            minW = 300,
+            minH = 150,
+            width = (300 / imgH) * 150,
+            height = (150 / b) * 300;
+        if (b >= minW && imgH >= minH) {
+            if ((width - height) <= 150) {
+                pic += con + a.item(i).src;
+                con = ','
+            }
+        }
+    }
+    picArr = pic.split(',');
+    var c = parseInt(Math.random() * picArr.length);
+    return picArr[c]
+}
+
+function jiathis_get_des() {
+    var a = '';
+    var b = document.getElementsByTagName("meta");
+    var c = b.length;
+    if (/msie/i.test(navigator.userAgent)) {
+        for (i = 0; i < c; i++) {
+            if (b[i].name == 'description') {
+                a = b[i].content
+            }
+        }
+        if (a == '') {
+            for (k in b) {
+                if (k == 'description') {
+                    a = b[k].content
+                }
+            }
+        }
+        if (/msie 6/i.test(navigator.userAgent)) {
+            a = ''
+        }
+    } else {
+        for (k in b) {
+            if (/chrome/i.test(navigator.userAgent)) {
+                if (typeof(b[k].name) != 'undefined') {
+                    if (b[k].name == 'description') {
+                        a = b[k].content
+                    }
+                }
+            } else {
+                if (k == 'description') {
+                    a = b[k].content
+                }
+            }
+        }
+    }
+    a = a.replace(/\s/g, '');
+    return a
+}
+
+function jiathis_SetString(a, b) {
+    var c = 0;
+    var s = "";
+    for (var i = 0; i < a.length; i++) {
+        if (a.charCodeAt(i) > 128) {
+            c += 2
+        } else {
+            c++
+        }
+        s += a.charAt(i);
+        if (c >= b) {
+            return s
+        }
+    }
+    return s
+}
+
+function jiathis_sharewx(a, b) {
+    jiathis_popup('', b, a);
+    return false
+}
+
+function jiathis_popup(c, d, e) {
+    var f, wt, ft, innerhtml, mt, width, height, bh, mt, isIe6 = /msie|MSIE 6/.test(navigator.userAgent);
+    if (g = document.getElementById('jiathis_weixin_share')) {
+        g = document.getElementById('jiathis_weixin_share')
+    } else {
+        var g = document.createElement("div");
+        if (isIe6) {
+            g.style.position = "absolute";
+            g.style.zIndex = "1000000";
+            g.style.left = '650px';
+            var h = document.body.scrollTop || document.documentElement.scrollTop;
+            g.style.top = parseInt(h) + 300 + 'px'
+        } else {
+            g.style.position = "fixed";
+            g.style.zIndex = "10000000001"
+        }
+        g.id = 'jiathis_weixin_share'
+    } if (c) {
+        f = c;
+        wt = '在微信上关注我们';
+        ft = '打开微信，点击底部的“发现”，使用 “扫一扫” 即可关注我们。';
+        innerhtml = '<img src="' + f + '" style="margin-top:25px;" width="129" alt="二维码加载失败" height="129" id="jiathis_follow_img">';
+        width = 'width:300px;';
+        height = 'height:300px;';
+        bh = 'height:181px;';
+        mt = 'margin: -100px 0 0 -200px;'
+    } else {
+        f = JIATHIS_CONFIGS.shost + '?webid=weixin&url=' + d + '&title=' + e + '&isexit=false';
+        wt = '分享到微信朋友圈';
+        ft = '打开微信，点击底部的“发现”，使用 “扫一扫” 即可将网页分享到我的朋友圈。 <a href="' + f + '" target="_blank">如何使用？</a>';
+        innerhtml = innerhtmlw = '二维码加载中....';
+        width = 'width:360px;';
+        height = 'height:360px;';
+        bh = 'height:251px;';
+        mt = 'margin: -200px 0 0 -200px;'
+    }
+    g.innerHTML = '<div id="jiathis_weixin_modal" style="background-clip: padding-box;background-color: #FFFFFF;border: 1px solid rgba(0, 0, 0, 0.3);  border-radius: 6px 6px 6px 6px;  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3); left: 50%; ' + mt + 'overflow: hidden; position: fixed; top: 50%; ' + width + height + ' overflow:hidden;" class="jiathis_weixin_modal"><div class="jiathis_modal_header" id="jiathis_modal_header" style="border-bottom: 1px solid #EEEEEE; padding: 9px 15px;"><a style="text-decoration:none;  margin-top: 2px; color: #000000; float: right;  font-size: 20px;  font-weight: bold; cursor:pointer;line-height: 20px; opacity: 0.2; text-shadow: 0 1px 0 #FFFFFF;"class="jiathis_weixin_close" id="jiathis_weixin_close" onclick="jiathis_cancel()"target="_self">×</a><h3 id="jiathis_weixin_h3"style=" line-height: 30px; margin: 0; font-weight:normal; font-family:"微软雅黑";">' + wt + '</h3></div><div class="jiathis_modal_body"id="jiathis_modal_body"style="text-align:center;' + bh + '"><p id="jiathis_webchat">' + innerhtml + '</p></div><div class="jiathis_modal_footer" id="jiathis_modal_footer"style="  border-radius: 0 0 6px 6px; border-top: 1px solid #DDDDDD; box-shadow: 0 1px 0 #FFFFFF inset; height:100%;padding:0 10px;padding-top:11px;text-align: right; font-size:12px;"><div id="jiathis_weixin_tip"style="text-align:left;margin:0; padding:0;font-size:12px;">' + ft + '</div>  </div></div>';
+    document.body.appendChild(g);
+    if (!c) {
+        setTimeout(function() {
+            var a = document.createElement('img');
+            var b = document.getElementById('jiathis_webchat');
+            a.src = JIATHIS_CONFIGS.qhost + '/?data=' + d;
+            a.width = '220';
+            a.height = '220';
+            // a.style.marginTop = '15px';
+            b.innerHTML = '';
+            a.alt = '二维码加载失败...';
+            b.appendChild(a)
+        }, 1000)
+    }
+    _oMaskEl = document.getElementById("jiathis_weixin_share")
+}
+
+function jiathis_cancel() {
+    _oDlgEl = document.getElementById('jiathis_weixin_share');
+    document.body.removeChild(_oDlgEl);
+    _oDlgEl = _oDivEl = _oMaskEl = _oErweimaMaskEl = null
 }

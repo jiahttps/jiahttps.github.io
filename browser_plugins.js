@@ -13,9 +13,9 @@ function get_browser_plugins(showid, browserid){
 	tips_html = '按住鼠标左键，将此链接拖动到浏览器的书签栏即可。',
 	arrow_html = '<img style="vertical-align:top" src="'+_arrow_icon+'" border="0">',
 	_href = "javascript:(function(){var w=window,d=document,s;if(!w.jiathis){w.jiathis=1;s=d.createElement('script');s.src='http://www.jiathis.com/code/j.js';d.getElementsByTagName('head')[0].appendChild(s);s=null}else{$CKE.center()}})()";
-	
+
 	var _jiathis_browser = get_browser();
-	
+
 	if (_jiathis_browser.ie) {
 		var type = navigator.appVersion.split(';')
 		var string = '';
@@ -40,11 +40,11 @@ function get_browser_plugins(showid, browserid){
 			font_color = '#000';
 			foot_html = '，以后浏览任何网站，直接使用浏览器右键菜单就可以一键分享。';
 		}
-		
-		
+
+
 		//_href = 'http://www.jiathis.com/resource/downloads/plugins/JiaThis_ShareTools.reg';
 	} else {
-		
+
 		if (showid == '_whatisjiathis') {
 			head_html = '个人用户请';
 			font_color = '#000';
@@ -52,11 +52,11 @@ function get_browser_plugins(showid, browserid){
 				head_html += '将';
 				foot_html += '拖到浏览器书签栏';
 			}
-			
+
 			foot_html += '，以后浏览任何网站，直接点击就可以一键分享。';
 		}
-		
-		
+
+
 		if (_jiathis_browser.firefox) {
 			//_href = 'http://www.jiathis.com/resource/downloads/plugins/JiaThis_FireFox.xpi';
 			_href = 'https://addons.mozilla.org/zh-CN/firefox/addon/jiathis/';
@@ -74,9 +74,9 @@ function get_browser_plugins(showid, browserid){
 			}
 		}
 	}
-	
+
 	var tipsid = browserid+"_tips";
-	
+
 	if(icon_html){
 		var html = head_html;
 		html += "<span id=\""+browserid+"\" class=\"ml15\" onmousemove=\"show_browser_tips('"+browserid+"','"+tipsid+"',-80,30);\" onmouseout=\"h('"+tipsid+"');\">\n";

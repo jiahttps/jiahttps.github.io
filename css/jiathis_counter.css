@@ -8,7 +8,7 @@
     padding: 0 0 0 4px;
     height:16px;
 	font-family:arial,helvetica,sans-serif;
-    width: 32px !important; 
+    width: 32px !important;
 }
 #ckepop .jiathis_counter.jiathis_bubble_style:hover {
     color:#000000;background-position: -36px -64px !important;
@@ -16,12 +16,12 @@
 #ckepop .jiathis_counter.jiathis_bubble_style .atc_s {
     display: none !important;
 }
-#ckepop * html .jiathis_counter.jiathis_bubble_style { 
-    width: 36px !important; 
+#ckepop * html .jiathis_counter.jiathis_bubble_style {
+    width: 36px !important;
     display:inline;
 }
-#ckepop * html .jiathis_counter.jiathis_bubble_style.compatmode0 { 
-    width: 32px !important; 
+#ckepop * html .jiathis_counter.jiathis_bubble_style.compatmode0 {
+    width: 32px !important;
     display:block;
 }
 #ckepop .jiathis_button_expanded{
@@ -47,7 +47,7 @@
 #jiathis_style_32x32 .jiathis_counter.jiathis_bubble_style:hover {
     color:#000000;background-position: 0 -32px !important;
 }
-#jiathis_style_32x32 * html .jiathis_counter.jiathis_bubble_style { 
+#jiathis_style_32x32 * html .jiathis_counter.jiathis_bubble_style {
     width: 60px !important;
 }
 #jiathis_style_32x32  .jiathis_button_expanded{
@@ -71,7 +71,7 @@
     padding: 0 0 0 4px;
     height:16px;
 	font-family:arial,helvetica,sans-serif;
-    width: 32px !important; 
+    width: 32px !important;
 }
 .jiathis_style .jiathis_counter.jiathis_bubble_style:hover {
     color:#000000;background-position: -36px -64px !important;
@@ -79,12 +79,12 @@
 .jiathis_style .jiathis_counter.jiathis_bubble_style .atc_s {
     display: none !important;
 }
-.jiathis_style * html .jiathis_counter.jiathis_bubble_style { 
-    width: 36px !important; 
+.jiathis_style * html .jiathis_counter.jiathis_bubble_style {
+    width: 36px !important;
     display:inline;
 }
-.jiathis_style * html .jiathis_counter.jiathis_bubble_style.compatmode0 { 
-    width: 32px !important; 
+.jiathis_style * html .jiathis_counter.jiathis_bubble_style.compatmode0 {
+    width: 32px !important;
     display:block;
 }
 .jiathis_style .jiathis_button_expanded{
@@ -110,7 +110,7 @@
 .jiathis_style_32x32 .jiathis_counter.jiathis_bubble_style:hover {
     color:#000000;background-position: 0 -32px !important;
 }
-.jiathis_style_32x32 * html .jiathis_counter.jiathis_bubble_style { 
+.jiathis_style_32x32 * html .jiathis_counter.jiathis_bubble_style {
     width: 60px !important;
 }
 .jiathis_style_32x32  .jiathis_button_expanded{
@@ -136,7 +136,7 @@
 .jiathis_style_24x24 .jiathis_counter.jiathis_bubble_style:hover {
     color:#000000;background-position: 0 -104px !important;
 }
-.jiathis_style_24x24 * html .jiathis_counter.jiathis_bubble_style { 
+.jiathis_style_24x24 * html .jiathis_counter.jiathis_bubble_style {
     width: 60px !important;
 }
 .jiathis_style_24x24  .jiathis_button_expanded{
