@@ -6,7 +6,6 @@ var JIATHIS_CONFIGS = {
     _s: null,
     codehost: "https://jiahttps.github.io",
     sc: false,
-    uid: 1626433,
     ckprefix: "jt_",
     jtcbk: "jtss",
     jtck: "",
